@@ -1,3 +1,28 @@
+// Auto-scroll to section on page load if hash exists
+window.addEventListener('load', () => {
+ if (window.location.hash) {
+ const element = document.querySelector(window.location.hash);
+ if (element) {
+ setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 100);
+ }
+ }
+});
+
+// Generate gallery items dynamically
+const galleryContainer = document.getElementById('galleryContainer');
+if (galleryContainer) {
+ for (let i = 1; i <= 100; i++) {
+ const item = document.createElement('div');
+ item.className = 'item';
+ const img = document.createElement('img');
+ img.src = `images/image${i}.jpg`;
+ img.alt = 'Décor gâteau';
+ img.loading = 'lazy';
+ item.appendChild(img);
+ galleryContainer.appendChild(item);
+ }
+}
+
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
 const navLinks = document.querySelectorAll('.nav ul li a');
